@@ -1,0 +1,104 @@
+export const COMPANY_INFO = {
+  name: 'STOCKIFY',
+  tagline: 'Smart Inventory Management System',
+  fullLegalName: 'Stockify Technologies',
+
+  // Office information
+  subOffice: 'Vellore Institute of Technology',
+  officeAddress: 'Tiruvalam Rd, Katpadi, Vellore, Tamil Nadu 632014, India',
+
+  // Contact information
+  phone: '8870810456',
+  displayPhone: '8870810456',
+
+  email: 'contact@stockify.io',
+};
+
+export const INVESTIGATION_STATUS = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+};
+
+export const USER_ROLES = {
+  MANAGER: 'MANAGER',
+  STAFF: 'STAFF',
+};
+
+export const PERMISSIONS = {
+  // Manager permissions
+  VIEW_DASHBOARD: 'VIEW_DASHBOARD',
+  VIEW_INVENTORY: 'VIEW_INVENTORY',
+  VIEW_PRODUCTS: 'VIEW_PRODUCTS',
+  VIEW_STORES: 'VIEW_STORES',
+  VIEW_SHRINKAGE: 'VIEW_SHRINKAGE',
+  VIEW_INVESTIGATION: 'VIEW_INVESTIGATION',
+  MANAGE_PRODUCTS: 'MANAGE_PRODUCTS',
+  MANAGE_PRICES: 'MANAGE_PRICES',
+  MANAGE_STOCK: 'MANAGE_STOCK',
+  MANAGE_STORES: 'MANAGE_STORES',
+  MANAGE_STAFF: 'MANAGE_STAFF',
+  APPROVE_ADJUSTMENTS: 'APPROVE_ADJUSTMENTS',
+  REJECT_ADJUSTMENTS: 'REJECT_ADJUSTMENTS',
+  RESOLVE_INVESTIGATIONS: 'RESOLVE_INVESTIGATIONS',
+  VIEW_ANALYTICS: 'VIEW_ANALYTICS',
+  VIEW_AUDIT_LOG: 'VIEW_AUDIT_LOG',
+  MODIFY_INVENTORY_MASTER_DATA: 'MODIFY_INVENTORY_MASTER_DATA',
+
+  // Staff operational permissions
+  VIEW_ASSIGNED_STORE: 'VIEW_ASSIGNED_STORE',
+  SUBMIT_PHYSICAL_COUNT: 'SUBMIT_PHYSICAL_COUNT',
+  SUBMIT_SALES: 'SUBMIT_SALES',
+  SUBMIT_STOCK_MOVEMENT: 'SUBMIT_STOCK_MOVEMENT',
+  REPORT_SHRINKAGE: 'REPORT_SHRINKAGE',
+  SUBMIT_INVESTIGATION_INFORMATION: 'SUBMIT_INVESTIGATION_INFORMATION',
+};
+
+export const ROLE_PERMISSIONS = {
+  MANAGER: [
+    'VIEW_DASHBOARD',
+    'VIEW_INVENTORY',
+    'VIEW_PRODUCTS',
+    'VIEW_STORES',
+    'VIEW_SHRINKAGE',
+    'VIEW_INVESTIGATION',
+    'MANAGE_PRODUCTS',
+    'MANAGE_PRICES',
+    'MANAGE_STOCK',
+    'MANAGE_STORES',
+    'MANAGE_STAFF',
+    'APPROVE_ADJUSTMENTS',
+    'REJECT_ADJUSTMENTS',
+    'RESOLVE_INVESTIGATIONS',
+    'VIEW_ANALYTICS',
+    'VIEW_AUDIT_LOG',
+    'MODIFY_INVENTORY_MASTER_DATA',
+  ],
+
+  STAFF: [
+    'VIEW_DASHBOARD',
+    'VIEW_INVENTORY',
+    'VIEW_PRODUCTS',
+    'VIEW_SHRINKAGE',
+    'VIEW_ASSIGNED_STORE',
+    'SUBMIT_PHYSICAL_COUNT',
+    'SUBMIT_SALES',
+    'SUBMIT_STOCK_MOVEMENT',
+    'REPORT_SHRINKAGE',
+    'SUBMIT_INVESTIGATION_INFORMATION',
+  ],
+};
+
+export const hasPermission = (userRole, permission) => {
+  if (!userRole) return false;
+
+  const role =
+    userRole === 'STAFF'
+      ? 'STAFF'
+      : userRole === 'MANAGER'
+        ? 'MANAGER'
+        : null;
+
+  if (!role) return false;
+
+  return (ROLE_PERMISSIONS[role] || []).includes(permission);
+};

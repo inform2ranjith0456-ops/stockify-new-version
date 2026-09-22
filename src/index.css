@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-navy-900 text-slate-100;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0B1120;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Warehouse grid & barcode patterns */
+.bg-warehouse-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.barcode-pattern {
+  background: repeating-linear-gradient(
+    90deg,
+    #06B6D4 0px,
+    #06B6D4 2px,
+    transparent 2px,
+    transparent 5px,
+    #06B6D4 5px,
+    #06B6D4 8px,
+    transparent 8px,
+    transparent 11px,
+    #06B6D4 11px,
+    #06B6D4 13px,
+    transparent 13px,
+    transparent 16px
+  );
+}
+
+.barcode-pattern-dark {
+  background: repeating-linear-gradient(
+    90deg,
+    #334155 0px,
+    #334155 2px,
+    transparent 2px,
+    transparent 5px,
+    #334155 5px,
+    #334155 9px,
+    transparent 9px,
+    transparent 12px,
+    #334155 12px,
+    #334155 13px,
+    transparent 13px,
+    transparent 17px
+  );
+}
